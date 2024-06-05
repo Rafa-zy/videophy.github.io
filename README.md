@@ -1,6 +1,6 @@
 # VideoPhy
 
-This is the repository that contains source code for the [Nerfies website](https://videophy.github.io).
+This is the repository that contains source code for the [VideoPhy website](https://Rafa-zy.github.io/videophy.github.io).
 
 The code is revised from the [Nerfies website](https://nerfies.github.io).
 
