@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos.">
+  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VIDEOPHY: Evaluating Physical Commonsense In Video Generation</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <!-- <link rel="icon" href="./static/images/favicon.svg"> -->
+  <link rel="icon" href="./static/images/mathvista.png">
+
+  <script type="text/javascript" src="static/js/sort-table.js" defer></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/explorer-index.js"></script>
+  <script src="./static/js/question_card.js"></script>
+
+  <script src="./static/js/leaderboard_testmini.js"></script>  
+  <script src="./data/results/output_folders.js" defer></script>
+  <script src="./data/results/model_scores.js" defer></script>
+
+  <script src="./visualizer/data/data_public.js" defer></script>
+
+  <script src="./static/js/index.js"></script>
+  
+</head>
+<body>
+
+<!-- title and author -->
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title is-bold">
+          <span class="mathvista" style="vertical-align: middle">VideoPhy</span>
+          </h1>
+          <h2 class="subtitle is-3 publication-subtitle">
+            Evaluating Physical Commonsense In Video Generation
+            <!-- <br> -->
+            <!-- with GPT-4V, Bard, and Other Large Multimodal Models -->
+          </h2>
+          <!-- <h1 class="title is-1 publication-title">VIDEOPHY: Evaluating Physical Commonsense In Video Generation</h1> -->
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://sites.google.com/view/hbansal">Hritik Bansal<span style="color: red;">*</span></a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://rafa-zy.github.io/">Zongyu Lin<span style="color: red;">*</span></a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://xpandora.github.io/">Tianyi Xie<span style="color: blue;">^</span></a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://www.math.ucla.edu/~zeshunzong/">Zeshun Zong<span style="color: blue;">^</span></a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://www.math.ucla.edu/~cffjiang/">Michal Yarom<span style="color: purple;">#</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://www.math.ucla.edu/~cffjiang/">Yonatan Bitton<span style="color: purple;">#</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://www.math.ucla.edu/~cffjiang/">Chenfanfu Jiang</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://web.cs.ucla.edu/~yzsun/">Yizhou Sun</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://web.cs.ucla.edu/~kwchang/">Kaiwei Chang</a><sup>1</sup>
+            </span>
+            <span class="author-block">
+              <a href="https://aditya-grover.github.io/">Aditya Grover</a><sup>1</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            (<span style="color: red;">*</span>, <span style="color: blue;">^</span>, <span style="color: purple;">#</span>, Equal Contribution)
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>University of California, Los Angeles</span>
+            <!-- <span class="author-block"><sup>2</sup>Google Research</span> -->
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>2</sup>Google Research</span>
+            <!-- <span class="author-block"><sup>2</sup>Google Research</span> -->
+          </div>
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2011.12948"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2011.12948"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/Hritikbansal/video_physics"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href="https://github.com/google/nerfies/releases/tag/0.1"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- top 2 images -->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <div class="images-container" style="display: flex; justify-content: center; align-items: center; width: 100%; height: 270px;">
+        <img src="./images/main_graph.png" alt="Image 1" style="height: 100%; object-fit: contain;" >
+        <img src="./images/VideoPhysics.png" alt="Image 2" style="height: 100%; object-fit: contain;">
+      </div>
+      <h2 class="has-text-centered">
+        <span class="dnerf">VIDEOPHY</span> evaluates physical commonsense in video generation. (a) Model performance on the
+        VIDEOPHY dataset using human evaluation; (b)  Illustration of poor physical commonsense by various T2V generative models.
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<!-- video gallery -->
+<section class="section">
+  <div class="container" style="margin-top: -150px; margin-bottom: -100px;">
+    <div class="columns is-centered m-6">
+      <div class="column is-full has-text-centered content">
+        <div id="results-carousel" class="carousel results-carousel">
+          <div class="box m-5">
+            <div class="content has-text-centered">
+              <video controls muted loop playsinline>
+                <source src="./videos/Water_streams_into_fresh_juice._1.mp4" type="video/mp4" width="56%">
+                Your browser does not support the video tag.
+              </video>
+              <p>Gen-2 (Bad Physics): break the laws of gravity</p>
+            </div>
+          </div>
+          <div class="box m-5">
+            <div class="content has-text-centered">
+              <video controls muted loop playsinline>
+                <source src="./videos/A_baker_scoops_flour_into_a_plastic_bowl_with_a_metal_scoop..mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <p>LaVIE (Bad Physics): break the conservation of mass</p>
+            </div>
+          </div>
+          <div class="box m-5">
+            <div class="content has-text-centered">
+              <video controls muted loop playsinline>
+                <source src="./videos/A_feather_slowly_floats_down_to_the_ground.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <p>VideoScope (Good Physics)</p>
+            </div>
+          </div>
+          <div class="box m-5">
+            <div class="content has-text-centered">
+              <video controls muted loop playsinline>
+                <source src="./videos/A_survivalist_strikes_a_flint_to_light_dry_tinder.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <p>VideoCrafter2 (Good Physics)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+
+<!-- Abstract. -->
+<section class="section" ">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Recent advances in internet-scale video data pretraining have led to the development of text-to-video generative models that can create high-quality videos across a broad range of visual concepts and styles. Due to their ability to synthesize realistic motions and render complex objects, these generative models have the potential to become general-purpose simulators of the physical world. However, it is unclear how far we are from this goal with the existing text-to-video generative models. 
+          </p>
+          <p>
+            To this end, we present VideoPhy, a benchmark designed to assess whether the generated videos follow physics laws (e.g., conservation of mass) for real-world activities (e.g., pouring water into a glass). Specifically, we curate a list of 688 captions that involve interactions between various material types in the physical world (e.g., solid-solid, solid-fluid, fluid-fluid). Subsequently, we generate videos conditioned on these captions from diverse state-of-the-art text-to-video generative models, including open-source models (e.g., VideoCrafter2) and closed-source models (e.g., Gen-2 from Runway). Further, our human evaluation reveals that the existing models severely lack the capability to generate videos that adhere to the text prompt and lack physical commonsense. 
+          </p>
+          <p>
+            The best performing model, VideoCrafter2, generates videos that adhere to the caption and physical laws for only 19\% of the instances. VideoPhy thus highlights that the video generative models are far from accurately simulating the physical world. Finally, we also supplement the dataset with an auto-evaluator, VideoCon-Phy, to assess text adherence and physical commonsense at scale. The dataset and model will be released publicly in the camera-ready version.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Benchmark -->
+<section class="section">
+  <div class="container" style="margin-top: -80px;">
+    <div class="columns is-centered m-6">
+      <div class="column is-full has-text-centered content">
+        <h2 class="title is-3">VideoPhy: Benchmark</h2>
+        <h3 class="title is-4">Data Statistics</h3>
+        <div id="results-carousel" class="carousel results-carousel">
+          <div class="box m-5">
+            <div class="content has-text-centered">
+              <img src="./images/benchmark_statistics.png" alt="benchmark_statistics" style="max-width:50%;"/>
+              <p> 
+                Key statistics of the <span class="mathvista" style="vertical-align: middle">VideoPhy</span> dataset.
+              </p> 
+            </div>
+          </div>
+          <div class="box m-5">
+            <div class="content has-text-centered">
+              <img src="./images/all_wheel.png" alt="all_wheel" style="max-width:50%;"/>
+              <p>
+                Top 20 most frequently occurring verbs(inner circle) and their top 4 direct nouns (outercircle) in our collected captions
+              </p>
+            </div>
+          </div>
+        </div>
+        <h3 class="title is-4">Detailed Leaderboard</h3>
+        <div>
+          <img src="./images/leaderboard.png" alt="leaderboard" style="max-width:100%;"/>
+              <p>
+                <b>Human evaluation results on the <span class="mathvista" style="vertical-align: middle">VideoPhy</span> dataset.</b> We report the percentage of testing prompts for
+which the T2V models generate videos that adhere to the conditioning caption and exhibit physical commonsense.
+We abbreviate text adherence as TA, physical commonsense as PC. <b>TA, PC</b> indicates the percentage of the
+instances for which TA=1 and PC=1. Ideally, we want the generative models to maximize the performance on
+this metric. In the first column, we highlight the overall performance, and the later columns are dedicated to
+fine-grained performance for the interaction between different states of matter in the prompts.
+              </p>
+        </div>
+
+      </div>
+    </div>
+</section>
+
+
+<!-- Auto Evaluation -->
+<section class="section">
+  <div class="container" style="margin-top: -80px;">
+    <div class="columns is-centered m-6">
+      <div class="column is-full  content">
+        <h2 class="title is-3 has-text-centered">VIDEOCON-Phy: Auto Evaluation of Physical Commonsense Alignment</h2>
+        <div>
+          <p>We use VIDEOCON, an open-source generative video-text language model with 7B parameters, that is trained on real videos for robust text adherence evaluation. Specifically, we prompt VIDEOCON to generate a response (Yes/No) to the text adherence and physical commonsense of the generated videos. </p>
+        </div>
+        <div style="text-align: center;">
+          <img src="./images/formular.png" alt="formular" style="max-width:40%;"/>
+        </div>
+        
+        <div class="has-text-centered">
+          <h3 class="title is-4" style="margin-top: 60px">Effectiveness of Our Auto-Evaluator</h3>
+          <img src="./images/roc-auc.png" alt="roc-auc" style="max-width:55%;"/>
+              <p>
+                <b>Comparison of ROC-AUC for automatic evaluation methods. </b>We find that VIDEOCONPHYSICS outperforms diverse baselines, including GPT-4Vision and Gemini-1.5-Pro-Vision, for text
+adherence (TA) and physical commonsense (PC) judgments by a large margin on the testing prompts.
+              </p>
+        </div>
+      </div>
+    </div>
+</section>
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+        href="./static/videos/nerfies_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+            Please remember to remove the analytics code included in the header of the website which
+            you do not want on your website.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
